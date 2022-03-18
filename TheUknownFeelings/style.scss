@@ -1,0 +1,290 @@
+$beige: whitesmoke;
+$black: #010707;
+$white: #ffffff;
+
+@mixin flexCenterColumn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+@mixin flexCenterRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Playfair Display', serif;
+}
+
+body {
+    overflow-x: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    background-color: $black;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+.container{
+    position: absolute;
+    top: 100vh;
+    height: auto;
+    width: 100%;
+    max-width: 2000px;
+}
+
+//General panels styles
+
+.panel{
+    height: 100vh;
+    max-height: 1400px;
+    width: 100%;
+    max-width: 2000px;
+}
+
+//First panel
+
+.panel--introduction{
+    position: fixed;
+    @include flexCenterColumn;
+    &:after{
+        content: "";
+        height: 100vh;
+        width: 100vw;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -5;
+        opacity: 30%;
+        background-image: url(images/landing_background.jpg);
+    }
+
+    h1,h2,p{
+        color: $white;
+    }
+
+    h1 {
+        font-size: 5rem;
+        margin-bottom: 20px;
+    }
+
+    .introduction__text--left {
+        position: absolute;
+        left: 10px;
+        bottom: 10px;
+    }
+
+    .introduction__text--right {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        font-size: 26px;
+    }
+}    
+
+//Panels about exhibition and author
+
+.panel__about{
+    @include flexCenterRow;
+}
+
+.panel__about--exhibition{
+    background: rgb(245, 245, 245);
+    background: linear-gradient(180deg, rgba(245, 245, 245, 1) 0%, rgba(233, 233, 233, 1) 100%, rgba(140, 140, 140, 1) 100%);
+    
+    .exhibition__description{
+        height: 80vh;
+        width: 900px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        h2{
+            font-size: 3rem;
+            letter-spacing: 4px;
+            position: relative;
+            &:after {
+                content: "";
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                height: 2px;
+                background-color: #010707;
+            }
+        }
+        p{
+            text-align: justify;
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 2rem;
+        }
+    }
+}
+
+.panel__about--author{
+   background-color: #E9E9E9;
+   height: 80vh;
+   overflow: hidden;
+   @include flexCenterColumn;
+   h2{
+       font-size: 3rem;
+       letter-spacing: 4px;
+       position: relative;
+       &:after{
+           content: "";
+           position: absolute;
+           top: 100%;
+           left: 0;
+           width: 100%;
+           height: 2px;
+           background-color: #010707;
+       }
+   }
+   section{
+       width: 100vw;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+   }
+   img{
+       height: 500px;
+       width: 500px;
+       margin-right: 45px;
+       border: 1px solid rgba(0, 0, 0, .5);
+   }
+   div{
+       height: 500px;
+       width: 700px;
+       margin-left: 45px;
+       padding: 20px;
+       border: 1px solid rgba(0, 0, 0, .5);
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       h3{
+           font-size: 2rem;
+           margin-bottom: 15px;
+       }
+       p{
+           text-align: justify;
+       }
+   }
+}
+
+//Sldier with works
+
+.panel--works{
+    height: 110vh;
+    position: relative;
+    @include flexCenterColumn;
+    h2{
+        font-size: 3rem;
+        color: white;
+        letter-spacing: 4px;
+        transition: 0.3s;
+        &:hover {
+            color: rgb(255, 253, 83);
+        }
+    }
+    ul{
+        position: relative;
+        height: 600px;
+        width: 90vw;
+        li{
+            height: 600px;
+            overflow: hidden;
+            
+            img{
+                height: 100%;
+                max-width: 800px;
+                border: 2px solid white;
+                transition: 0.3s;
+                &:hover {
+                    border-color: rgb(255, 253, 83);
+                }
+            }
+        }
+    }
+    button {
+        position: absolute;
+        top: calc(100% + 10px);
+        width: 50px;
+        background-color: transparent;
+        border: 2px solid transparent;
+        cursor: pointer;
+        font-family:'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;
+        font-size: 1.2rem;
+        color: #ffffff;
+        transition: 0.3s;
+        &:hover{
+            color: rgb(255, 253, 83);
+        }
+    }
+    .slick-prev{
+        left: 0;
+    }
+    .slick-next{
+        left: 550px;
+    }
+    .works__text{
+        height: 600px;
+        width: 600px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 25px;
+        border: 2px solid white;
+        transition: 0.3s;
+        &:hover {
+            border-color: rgb(255, 253, 83);
+            *{
+                color: rgb(255, 253, 83);
+            }
+        }
+        h3{
+            color: white;
+            font-size: 1.5rem;
+        }
+        p{
+            line-height: 25px;
+            letter-spacing: 1px;
+            color: white;
+            margin: 30px 0;
+            text-align: center;
+        }
+    }
+}
+
+//Bottom two panels - contact and copyright
+
+.panel--contact{
+    height: 20vh;
+    @include flexCenterColumn;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: whitesmoke;
+    opacity: 50%;
+}
+
+.panel--copyright{
+    height: 60px;
+    border-top: 2px solid $white;
+    background-color: $black;
+    opacity: 50%;
+    @include flexCenterColumn;
+
+    *{
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        color: #ffffff;
+    }
+}
